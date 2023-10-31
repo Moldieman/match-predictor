@@ -9,3 +9,4 @@ integration-tests/cypress/videos
 integration-tests/cypress/log
 *.pyc
 .history/*
+.env
