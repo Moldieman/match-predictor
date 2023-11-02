@@ -18,11 +18,14 @@ from matchpredictor.teams.teams_api import teams_api
 from matchpredictor.teams.teams_provider import TeamsProvider
 from matchpredictor.upcominggames.football_data_api_client import FootballDataApiClient
 from matchpredictor.upcominggames.upcoming_games_api import upcoming_games_api
+from matchpredictor.predictors.alphabetical_predictor import AlphabeticalPredictor
+
 
 
 def build_model_provider(training_data: List[Result]) -> ModelProvider:
     return ModelProvider([
         Model("Home", HomePredictor()),
+        Model("Alphabetic", AlphabeticalPredictor()),
         Model("Points", train_results_predictor(training_data)),
         Model("Offense simulator (fast)", train_offense_predictor(training_data, 1_000)),
         Model("Offense simulator", train_offense_predictor(training_data, 10_000)),

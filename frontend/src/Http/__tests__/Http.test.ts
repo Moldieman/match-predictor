@@ -27,6 +27,9 @@ describe('Http', () => {
         const res = await http.sendRequest('error', decoder);
 
         expect(res).toEqual(result.err({name: 'connection error'}));
+        // I get a failure on my local machine so the below fixes that issue but wont work on another device unless you are runnign Valte / Niginx :)
+        // expect(res).toEqual(result.err({name: 'server error', message: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n</body></html>\n'}));
+
     });
 
     test('500 error', async () => {
